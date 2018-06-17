@@ -1,6 +1,8 @@
 # rumble-react
 A react client for the rumble server
 
+The official URL is: http://saarsayfan.pythonanywhere.com/static/rumble-react
+
 ## Deployment on PythonAnywhere
 ### First Time Prerequisites
 Run the following commands in a [PythonAnywhere console](
@@ -19,6 +21,7 @@ nvm alias default v9.6.1
 cd rumble-react
 npm install
 ```
+Or run `install_node.py` (Untested)
 
 ### General Deployment
 ```

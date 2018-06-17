@@ -19,18 +19,22 @@ class LoginBar extends Component {
     };
 
     handleLogin = (event) => {
-        axios.post(this.props.url + '/active_user', {username: this.state.username, password: this.state.password})
-            .then((data) => {this.props.onLogin(data.data.user_auth)})
+        event.preventDefault();
+        return axios.post(this.props.url + '/active_user', {username: this.state.username, password: this.state.password})
+            .then((data) => {
+                this.props.onLogin(data.data.user_auth)}
+                )
             .then(this.setState({...this.state, loggedIn: true}))
             .catch(e => console.log(e));
-        event.preventDefault();
+
     };
 
     handleRegister = (event) => {
-        axios.post(this.props.url + '/user', {username: this.state.username, password: this.state.password, handle: this.state.nickname})
+        event.preventDefault();
+        return axios.post(this.props.url + '/user', {username: this.state.username, password: this.state.password, handle: this.state.nickname})
             .then((data) => this.handleLogin(event))
             .catch(e => console.log(e));
-        event.preventDefault();
+
     };
 
     render = () => {

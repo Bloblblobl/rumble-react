@@ -13,3 +13,7 @@ Enzyme.configure({ adapter: new Adapter() });
 global.shallow = shallow;
 global.render = render;
 global.mount = mount;
+
+// Add mock scrollIntoView because jsdom doesn't have it
+// See: https://github.com/jsdom/jsdom/issues/1695
+window.HTMLElement.prototype.scrollIntoView = function() {};
