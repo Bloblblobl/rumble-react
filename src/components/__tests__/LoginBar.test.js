@@ -24,12 +24,25 @@ describe('LoginBar tests', () => {
         expect(loginBar.find('.App-Button').length).toBe(2)
     });
 
+    it('matches snapshot when logged out', () => {
+        const loginBar = shallow(<LoginBar/>);
+        expect(loginBar).toMatchSnapshot();
+    });
+
     it('shows only logo when logged in', () => {
         const loginBar = shallow(<LoginBar/>);
         loginBar.setState({...loginBar.state, loggedIn: true});
         expect(loginBar.find('.App-logo').length).toBe(1);
         expect(loginBar.find('.App-Button').length).toBe(0)
     });
+
+    it('matches snapshot when logged in', () => {
+        const loginBar = shallow(<LoginBar/>);
+        loginBar.setState({...loginBar.state, loggedIn: true});
+        expect(loginBar).toMatchSnapshot();
+    });
+
+
 
     it('Calls onLogin with proper credentials when login is clicked', async () => {
         // Prepare the test
@@ -49,7 +62,7 @@ describe('LoginBar tests', () => {
         // Verify axios was called with the proper parameters
         expect(post.mock.calls.length).toBe(1);
         expect(post).toHaveBeenCalledTimes(1);
-        const expectedArgs = ['/active_user', { username: 'Bob', password: 'secret' }];
+        const expectedArgs = ['/active_user', {username: 'Bob', password: 'secret'}];
         expect(post).toHaveBeenCalledWith(...expectedArgs);
 
         // Verify handleLogin() properly called the onLogin() callabck
