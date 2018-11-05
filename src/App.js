@@ -25,7 +25,6 @@ class App extends Component {
     };
 
     onRoomChange = (room) => {
-        console.log("On Room Change: " + room);
         this.setState({...this.state, roomName: room});
     };
 
